@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% load blog_tags %}
+
+{% block title %}{{ post.title }} - My Django Blog{% endblock %}
+
+{% block meta_description %}{{ post.meta_description }}{% endblock %}
+
+{% block content %}
+    <article>
+        <h2>{{ post.title }}</h2>
+        <p class="date">Published on {{ post.created_at|date:"F j, Y" }}</p>
+        
+        <div class="post-content">
+            {{ post.content|markdown }}
+        </div>
+    </article>
+    
+    <p><a href="{% url 'blog:post_list' %}">&larr; Back to all posts</a></p>
+{% endblock %}
